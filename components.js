@@ -1,17 +1,18 @@
 // components.js — shared nav, footer, floating WA button
+const base = '/new_demo';
 
 function injectNav(activePage = '') {
   const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
 
   const links = [
-    { href: isHome ? '#hero' : '/', label: 'Home' },
-    { href: isHome ? '#about' : '/#about', label: 'About' },
-    { href: isHome ? '#services' : '/#services', label: 'Services' },
-    { href: isHome ? '#testimonials' : '/#testimonials', label: 'Testimonials' },
-    { href: isHome ? '#faq' : '/#faq', label: 'FAQ' },
-    { href: '/conditions.html', label: 'Conditions' },
-    { href: '/blog.html', label: 'Blog' },
-    { href: '/resources.html', label: 'Resources' },
+    { href: isHome ? '#hero' : base + '/', label: 'Home' },
+    { href: isHome ? '#about' : base + '/#about', label: 'About' },
+    { href: isHome ? '#services' : base + '/#services', label: 'Services' },
+    { href: isHome ? '#testimonials' : base + '/#testimonials', label: 'Testimonials' },
+    { href: isHome ? '#faq' : base + '/#faq', label: 'FAQ' },
+    { href: base + '/conditions.html', label: 'Conditions' },
+    { href: base + '/blog.html', label: 'Blog' },
+    { href: base + '/resources.html', label: 'Resources' },
   ];
 
   const navHTML = `
@@ -25,7 +26,7 @@ function injectNav(activePage = '') {
   <header class="fixed w-full z-40 bg-white/80 backdrop-blur-md border-b border-slate-100">
     <div class="max-w-7xl 2xl:max-w-full mx-auto px-4 sm:px-6 2xl:px-16">
       <div class="flex items-center justify-between h-16">
-        <a href="/" class="flex items-center gap-3">
+        <a href="${base}/" class="flex items-center gap-3">
           <div class="h-10 w-10 rounded-md bg-gradient-to-br from-teal-500 via-teal-400 to-sky-300 flex items-center justify-center text-white font-semibold text-sm shadow">AM</div>
           <div>
             <div class="text-sm font-semibold text-slate-800">Dr. Astik Mane</div>
@@ -34,7 +35,7 @@ function injectNav(activePage = '') {
         </a>
         <nav class="hidden md:flex items-center gap-5 text-sm font-medium text-slate-600">
           ${links.map(l => `<a href="${l.href}" class="hover:text-teal-600 transition ${activePage === l.label ? 'text-teal-600' : ''}">${l.label}</a>`).join('')}
-          <a href="/#contact" class="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition shadow-sm">Book Appointment</a>
+          <a href="${base}/#contact" class="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition shadow-sm">Book Appointment</a>
         </nav>
         <button id="mobileBtn" class="md:hidden p-2 rounded-md border border-slate-200">
           <svg id="menuOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -45,7 +46,7 @@ function injectNav(activePage = '') {
     <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100 bg-white/95">
       <div class="px-4 py-3 flex flex-col gap-2 text-sm">
         ${links.map(l => `<a href="${l.href}" class="py-2 text-slate-600">${l.label}</a>`).join('')}
-        <a href="/#contact" class="py-2 bg-teal-600 text-white rounded-lg text-center hover:bg-teal-700">Book Appointment</a>
+        <a href="${base}/#contact" class="py-2 bg-teal-600 text-white rounded-lg text-center hover:bg-teal-700">Book Appointment</a>
       </div>
     </div>
   </header>`;
@@ -88,22 +89,22 @@ function injectFooter() {
       <div>
         <div class="text-xs font-semibold text-white uppercase tracking-widest mb-5">Quick Links</div>
         <ul class="space-y-3 text-sm">
-          <li><a href="/" class="hover:text-teal-400 transition">Home</a></li>
-          <li><a href="/blog.html" class="hover:text-teal-400 transition">Blog</a></li>
-          <li><a href="/conditions.html" class="hover:text-teal-400 transition">Conditions</a></li>
-          <li><a href="/resources.html" class="hover:text-teal-400 transition">Resources</a></li>
-          <li><a href="/#contact" class="hover:text-teal-400 transition">Contact</a></li>
+          <li><a href="${base}/" class="hover:text-teal-400 transition">Home</a></li>
+          <li><a href="${base}/blog.html" class="hover:text-teal-400 transition">Blog</a></li>
+          <li><a href="${base}/conditions.html" class="hover:text-teal-400 transition">Conditions</a></li>
+          <li><a href="${base}/resources.html" class="hover:text-teal-400 transition">Resources</a></li>
+          <li><a href="${base}/#contact" class="hover:text-teal-400 transition">Contact</a></li>
         </ul>
       </div>
       <div>
         <div class="text-xs font-semibold text-white uppercase tracking-widest mb-5">Conditions</div>
         <ul class="space-y-3 text-sm">
-          <li><a href="/conditions/depression.html" class="hover:text-teal-400 transition">Depression</a></li>
-          <li><a href="/conditions/anxiety.html" class="hover:text-teal-400 transition">Anxiety</a></li>
-          <li><a href="/conditions/ocd.html" class="hover:text-teal-400 transition">OCD</a></li>
-          <li><a href="/conditions/adhd.html" class="hover:text-teal-400 transition">ADHD</a></li>
-          <li><a href="/conditions/bipolar.html" class="hover:text-teal-400 transition">Bipolar Disorder</a></li>
-          <li><a href="/conditions/dementia.html" class="hover:text-teal-400 transition">Dementia</a></li>
+          <li><a href="${base}/conditions/depression.html" class="hover:text-teal-400 transition">Depression</a></li>
+          <li><a href="${base}/conditions/anxiety.html" class="hover:text-teal-400 transition">Anxiety</a></li>
+          <li><a href="${base}/conditions/ocd.html" class="hover:text-teal-400 transition">OCD</a></li>
+          <li><a href="${base}/conditions/adhd.html" class="hover:text-teal-400 transition">ADHD</a></li>
+          <li><a href="${base}/conditions/bipolar.html" class="hover:text-teal-400 transition">Bipolar Disorder</a></li>
+          <li><a href="${base}/conditions/dementia.html" class="hover:text-teal-400 transition">Dementia</a></li>
         </ul>
       </div>
       <div>
